@@ -200,7 +200,7 @@ export function CreateItem() {
                               ?
                               <>
                                 <img className='img-url' src={fileUrl} alt="" />
-                                <button className='clear-button button-not-empty' onClick={clearContent}><AiOutlineClear /></button>
+                                <button className='clear-button' onClick={clearContent}><AiOutlineClear /></button>
                               </>
                               :
                               (

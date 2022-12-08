@@ -132,6 +132,12 @@ span {
                         display: flex;
                         align-items: center;
                         justify-content: center;
+
+                        &:hover {
+                            .clear-button {
+                                display: flex;
+                            }
+                        }
                     }
 
                     .button-not-empty {
@@ -213,17 +219,31 @@ span {
 
 .div-img{
     .clear-button{
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
-        margin: 0;
-        top: 0;
-        right: 0;
         position: absolute;
         width: 40px;
         height: 40px;
         font-size: $text-sm;
-        background-color: $bg-main;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: $rounded-xs;
+        cursor: pointer;
+        background-color: $bg-item;
+        color: $rounded-color;
+        transition: all ease-in-out 0.3s;
+        box-sizing: border-box;
+        border: 2px solid $rounded-color;
+        font-weight: $font-semibold;
+
+        &:hover {
+            color: $text-color;
+            background-color: $bg-separate;
+            border: 2px solid $bg-contrast;
+        }
     }
     .div-loading {
         width: 100%;

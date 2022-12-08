@@ -104,7 +104,7 @@ export function CollectionTable({dataCollection, currentData}:any) {
                                             <div className='collection-table-grid'>
                                                 {
                                                     dataCollection.slice(5, 10).map((ele:PropsType, index:number) => (
-                                                        <Link to={"/collection-detail/" + ele._id} className='collection-list-item' key={ele._id}>
+                                                        <a className='collection-list-item' key={ele._id} onClick={ ()  => addRouter(ele.address)}>
                                                             <div className='colection-header-name items'>
                                                                 <span className='span-id'>{index + 6}</span>
                                                                 <img src={ele.logo} />
@@ -116,7 +116,7 @@ export function CollectionTable({dataCollection, currentData}:any) {
                                                             <div className='colection-header-name volume items'>
                                                                 <span>3000</span>
                                                             </div>
-                                                        </Link>
+                                                        </a>
                                                     ))
                                                 }
                                             </div>

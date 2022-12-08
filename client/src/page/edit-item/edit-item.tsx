@@ -180,7 +180,7 @@ export function EditItem() {
                               :
                               <img className='img-url' src={fileDisplay} alt="" />
                             }
-                            <button className='clear-button button-not-empty' onClick={clearContent}><AiOutlineClear /></button>
+                            <button className='clear-button' onClick={clearContent}><AiOutlineClear /></button>
                           </> 
                           : 
                           (
