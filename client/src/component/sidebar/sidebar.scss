@@ -1,0 +1,66 @@
+@import "../../index.scss";
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    z-index: 50;
+    transition: all ease 0.5s;
+    border-right: 1px solid $rounded-color;
+    height: 100%;
+    background-color: $bg-main;
+    box-shadow: 0 2px 4px -1px $bg-sub, 0 1px 2px -1px $bg-sub;
+
+    .sidebar-link {
+        margin-top: $sp-22;
+        display: flex;
+        width: 100%;
+        color: $text-color;
+        align-items: center;
+        gap: $sp-4;
+        transition: ease 0.2s;
+        justify-content: center;
+        flex-direction: column;
+
+        .link-list {
+            width: 100%;
+            display: flex;
+            overflow: hidden;
+            align-items: center;
+            gap: $sp-4;
+            justify-content: center;
+            flex-direction: column;
+
+            .title-link {
+                width: 100%;
+                overflow: hidden;
+                color: $bg-sub;
+                padding-left: $sp-8;
+                font-size: $text-sm;
+                font-weight: $font-semibold;
+            }
+
+            .sisebar-navlink {
+                width: 82%;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                gap: $sp-4;
+                padding-left: $sp-4;
+                overflow: hidden;
+                justify-content: flex-start;
+                text-decoration: none;
+                border-radius: $rounded-sm;
+                border: 2px solid $rounded-color;
+                color: $text-color;
+                font-size: $text-xs;
+                font-weight: $font-semibold;
+                &:hover {
+                    background-color: $bg-contrast;
+                    color: $bg-main;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,257 @@
+@import "../../index.scss";
+
+
+.class-table {
+    width: 100%;
+    margin: 0 $sp-8;
+
+    .class-header-table {
+        display: flex;
+        padding: $sp-6 $sp-4;
+        position: sticky;
+        background-color: $bg-main;
+        top: 72px;
+        z-index: 10;
+    }
+}
+
+.table-content {
+    position: relative;
+    margin: 0 $sp-12;
+    max-width: 100%;
+    height: auto;
+    max-height: 7839px;
+}
+.class-header-table {
+    .margin-div {
+        width: 60px;
+        display: flex;
+        justify-content: flex-start;
+        flex: 0 0 60px;
+        align-items: center;
+    }
+
+    .title-element {
+        width: 25%;
+        display: flex;
+        justify-content: flex-start;
+        flex: 0 1 25%;
+        align-items: center;
+
+        span {
+            color: $text-color;
+            font-weight: 600;
+            font-size: $text-2xs;
+            line-height: $leading-tiny;
+
+            .content {
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .not-element {
+        width: 17.5%;
+        display: flex;
+        justify-content: flex-end;
+        flex: 0 0 17.5%;
+        align-items: center;
+
+        span {
+            color: $text-color;
+            font-weight: 600;
+            font-size: $text-2xs;
+            line-height: $leading-tiny;
+
+            .content {
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+.table-content {
+    .list-item {
+        .list-item-outer {
+            display: none;
+
+            .list-item-inner {
+                padding: 0;
+                cursor: pointer;
+                position: relative;
+                border-left: none;
+                border-right: none;
+                border-top: none;
+                justify-content: space-between;
+                width: 100%;
+                font-weight: 600;
+                color: $text-color;
+                text-align: left;
+                display: flex;
+                border-bottom: 1px solid $rounded-color;
+
+                .item-content-row {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    cursor: pointer;
+
+                    .item-content {
+                        display: flex;
+                        padding: $sp-2 $sp-4;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.item-content {
+    .check-box {
+        width: 60px;
+        display: flex;
+        flex: 0 1 60px;
+        justify-content: flex-start;
+        align-items: center;
+
+        span {
+            position: relative;
+            display: inline-flex;
+            border-radius: $rounded-xs;
+            overflow: hidden;
+
+            input {
+                // appearance: none;
+                border: 1px solid $rounded-color;
+                cursor: pointer;
+                height: 24px;
+                min-width: 24px;
+                overflow: hidden;
+                max-width: 24px;
+                background-color: $bg-main;
+                transition: box-shadow 0.2s ease 0s;
+                outline: none;
+                margin: 0px;
+            }
+        }
+    }
+
+    .element-content {
+        width: 25%;
+        display: flex;
+        flex: 0 1 25%;
+        justify-content: flex-start;
+        align-items: center;
+
+        .element-flex {
+            max-width: 100%;
+            display: flex;
+            align-items: center;
+
+            .avatar {
+                position: relative;
+                height: 40px;
+                width: 40px;
+                border-radius: $rounded-xs;
+                overflow: hidden;
+
+                span {
+                    box-sizing: border-box;
+                    display: block;
+                    overflow: hidden;
+                    width: initial;
+                    height: initial;
+                    background: none;
+                    opacity: 1;
+                    border: 0px;
+                    margin: 0px;
+                    padding: 0px;
+                    position: absolute;
+                    inset: 0px;
+
+                    img {
+                        position: absolute;
+                        inset: 0px;
+                        box-sizing: border-box;
+                        padding: 0px;
+                        border: none;
+                        margin: auto;
+                        display: block;
+                        width: 0px;
+                        height: 0px;
+                        min-width: 100%;
+                        max-width: 100%;
+                        min-height: 100%;
+                        max-height: 100%;
+                        object-fit: contain;
+                    }
+                }
+            }
+
+            .element-name {
+                display: flex;
+                margin-left: $sp-5;
+                padding-right: 80px;
+                max-width: 100%;
+                flex-direction: row;
+
+                span {
+                    display: inline-flex;
+                    gap: $sp-2;
+                    color: $text-color;
+                    font-weight: 600;
+                    font-size: $text-2xs;
+                    line-height: $leading-tiny;
+
+                    p {
+                        max-width: 60px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+        }
+    }
+
+    .not-element-content {
+        width: 17.5%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex: 0 0 17.5%;
+
+        span {
+            color: $text-color;
+            font-weight: 600;
+            font-size: $text-2xs;
+            line-height: $leading-tiny;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .class-table {
+        .class-header-table {
+            top: 136px;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .table-content {
+        .list-item {
+            .list-item-outer {
+                display: block;
+            }
+        }
+    }
+}

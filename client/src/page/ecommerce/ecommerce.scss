@@ -1,0 +1,82 @@
+@import "../../index.scss";
+
+.class-main{
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0%;
+    position: relative;
+    min-height: 100vh;
+    margin-bottom: $sp-4;
+}
+
+.class-main.content{
+    min-height: 100%;
+    position: relative;
+}
+
+.class-main.content{
+    .class-grid{
+        row-gap: $sp-8;
+        display: grid;
+
+        .bg-image{
+            background-size: cover;
+            margin-top:  - $sp-18;
+            padding-top: $sp-18;
+            background-image: url('../../../public/media/bg-image.png');
+            min-width: 0;
+            display: grid;
+            grid-column: span 12;
+
+            .content-grid{
+                margin: 0 auto;
+                max-width: 2560px;
+            }
+        }
+    }    
+}
+
+.fresnel-container{
+    margin: 0;
+    padding: 0;
+
+    .headerText{
+        margin: $sp-8 0;
+        color: $text-color;
+        font-size: $text-3xl;
+        line-height: $leaning-14;
+        font-weight: $font-bold;
+        text-align: center;
+    }
+}
+
+@media (min-width: 1600px){
+    .class-main.content{
+        .class-grid{
+            row-gap: $sp-12;
+        }
+    }
+}
+
+@media (min-width: 1200px){
+    .class-main.content {
+        .class-grid{
+            row-gap: $sp-10;
+        }
+    }
+}
+
+@media (max-width: 280px){
+    .navbar-main{
+        .search-outer{
+            display: none;
+        }
+    }
+}
+@media (min-width: 600px){
+    .class-grid{
+        .bg-image{
+            background-image: url('../../../public/media/magellan-gradient-dark.png');
+        }
+    }
+}

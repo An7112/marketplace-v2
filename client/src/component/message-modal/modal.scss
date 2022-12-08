@@ -1,0 +1,53 @@
+@import "../../index.scss";
+
+.class-main {
+    position: relative;
+}
+
+.modal-frame {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(45, 48, 53, 0.76);
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+
+    .modal{
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translateY(0%) translateX(-50%) rotateX(-25deg);
+        background: #fff;
+        width: 450px;
+        padding: $sp-10;
+        box-sizing: border-box;
+        border-radius: $rounded-sm;
+        text-align: center;
+        transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+        .icon-connect{
+            color:  $bg-icon;
+            font-size: $text-lg;
+            font-weight: $font-semibold;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        p{
+            color: $bg-main;
+            font-size: $text-xs;
+            font-weight: $font-semibold;
+        }
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: .5;
+    }
+  }

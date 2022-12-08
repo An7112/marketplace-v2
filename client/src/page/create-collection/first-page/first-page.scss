@@ -1,0 +1,211 @@
+@import "../../../index.scss";
+
+.collection-manager {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1280px;
+    padding: $sp-6;
+
+    .class-header {
+        display: flex;
+        flex-direction: column;
+
+        h1 {
+            font-weight: 600;
+            font-size: $text-2xl;
+            letter-spacing: 0px;
+            color: $text-color;
+        }
+
+        span {
+            font-weight: 400;
+            font-size: $text-xs;
+            color: $bg-sub;
+            margin-bottom: $sp-4;
+
+            .class-span-header {
+                .collection-header-info {
+                    display: flex;
+                    align-items: center;
+                    max-width: 100%;
+                    margin: $sp-4 auto 0px;
+                    text-align: center;
+                    font-size: $text-xs;
+                }
+
+                .collection-header-button {
+                    display: flex;
+                    justify-content: flex-start;
+                    margin: $sp-6 auto $sp-5;
+                    align-items: center;
+
+                    a {
+                        text-decoration: none;
+
+                        button {
+                            height: 60px;
+                            border-radius: $rounded-xl;
+                            padding: 0 $sp-5;
+                            border: none;
+                            background-color: $bg-icon;
+                            font-size: $text-xs;
+                            font-weight: 600;
+                            letter-spacing: 0.01em;
+                            color: $text-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .class-grid-items {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-row-gap: $sp-2;
+        grid-column-gap: $sp-2;
+
+        a {
+            text-decoration: none;
+            .item {
+                background-color: $bg-item;
+                border-radius: $rounded-xl;
+                box-shadow: rgba(0, 0, 0, 0.04) 0px 4px 8px;
+                transition: box-shadow 0.25s ease-in-out 0s;
+                overflow: hidden;
+            }
+        }
+    }
+}
+
+.item {
+    &:hover{
+        .item-info{
+            background-color: $bg-focus;
+            transition: all ease-in-out 0.2s;
+        }
+    }
+    .item-head {
+        padding-bottom: 56.25%;
+        height: 0px;
+        position: relative;
+
+        span {
+            box-sizing: border-box;
+            display: block;
+            overflow: hidden;
+            width: initial;
+            height: initial;
+            background: none;
+            opacity: 1;
+            border: 0px;
+            margin: 0px;
+            padding: 0px;
+            position: absolute;
+            inset: 0px;
+
+            img {
+                position: absolute;
+                inset: 0px;
+                box-sizing: border-box;
+                padding: 0px;
+                border: none;
+                margin: auto;
+                display: block;
+                width: 0px;
+                height: 0px;
+                min-width: 100%;
+                max-width: 100%;
+                min-height: 100%;
+                max-height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    .item-info {
+        padding: $sp-4;
+        border-radius: $rounded-xl;
+        z-index: 99;
+        display: flex;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: -28px;
+        gap: $sp-4;
+
+        span{
+            margin-top: $sp-7;
+            max-width: 160px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: $text-xs;
+            font-weight: 600;
+            color: $text-color;
+        }
+
+        .avatar-collection {
+            width: 78px;
+            height: 78px;
+            border: 4px solid $bg-item;
+            border-radius: $rounded-2xl;
+            background-color: $bg-item;
+            position: relative;
+
+            span{
+                box-sizing: border-box;
+                display: inline-block;
+                overflow: hidden;
+                width: 100%;
+                height: 100%;
+                background: none;
+                opacity: 1;
+                border: 0px;
+                margin: 0px;
+                padding: 0px;
+                position: relative;
+
+                img{
+                    position: absolute;
+                    inset: 0px;
+                    box-sizing: border-box;
+                    padding: 0px;
+                    border: none;
+                    margin: auto;
+                    display: block;
+                    width: 0px;
+                    height: 0px;
+                    min-width: 100%;
+                    max-width: 100%;
+                    min-height: 100%;
+                    max-height: 100%;
+                    object-fit: cover;
+                    border-radius: 12px;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .collection-manager {
+        .class-grid-items {
+            grid-row-gap: $sp-4;
+            grid-column-gap: $sp-4;
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+   
+}
+
+@media (min-width: 1600px) {
+    .collection-manager {
+        .class-grid-items {
+            grid-template-columns: repeat(4, 1fr);
+            grid-row-gap: $sp-6;
+            grid-column-gap: $sp-6;
+        }
+    }
+  
+}

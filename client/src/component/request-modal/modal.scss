@@ -1,0 +1,58 @@
+@import "../../index.scss";
+
+.class-main {
+    position: relative;
+}
+
+.modal-frame {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(45, 48, 53, 0.76);
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+
+    .modal-request {
+        position: absolute;
+        top: 30%;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        left: 50%;
+        transform: translateY(0%) translateX(-50%) rotateX(-25deg);
+        background: $bg-focus;
+        gap: $sp-4;
+        padding: $sp-8 $sp-8;
+        box-sizing: border-box;
+        border-radius: $rounded-sm;
+        transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+        svg {
+            color: $text-color;
+            font-size: $text-lg;
+        }
+
+        .load-icon {
+            animation: spin 1s linear infinite;
+        }
+
+        p {
+            color: $text-color;
+            font-size: $text-xs;
+            font-weight: $font-semibold;
+        }
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,87 @@
+@import "../../index.scss";
+
+.modal-connect{
+    &.compare{
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+.modal-content {
+    &.compare {
+        padding: $sp-4 $sp-8 $sp-8 $sp-8;
+        .modal-header{
+            padding: 0;
+        }
+        .modal-body {
+            margin-top: $sp-10;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 300px;
+
+            &::-webkit-scrollbar {
+                display: block;
+                width: 5px;
+                border-radius: $rounded-sm;
+            }
+            &::-webkit-scrollbar-thumb {
+                background: $rounded-color;
+            }
+
+        }
+    }
+}
+
+// .modal-button-view{
+//     border-radius: $rounded-xs;
+//     border: none;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     margin-top: $sp-2;
+//     padding: $sp-2;
+//     font-size: $text-2xs;
+//     color: $text-color;
+//     font-weight: 600;
+//     letter-spacing: 0.02em;
+//     cursor: pointer;
+//     background: border-box;
+
+//     svg{
+//         font-size: $text-sm;
+//         color: $bg-button;
+//     }
+// }
+
+h3{
+    a{
+        svg{
+            padding-left: $sp-4;
+            top: 2.1rem;
+            position: absolute;
+            font-size: $text-sm;
+            color: $text-color;
+
+            &:hover{
+                color: $bg-button;
+            }
+        }
+        
+    }
+}
+
+
+.modal-header {
+    flex-direction: row;
+    gap: $sp-6;
+
+    img {
+        width: 300px;
+        height: 260px;
+        object-fit: cover;
+        border-radius: $rounded-sm;
+    }
+}

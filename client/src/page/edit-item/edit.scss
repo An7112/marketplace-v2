@@ -1,0 +1,327 @@
+@import "../../index.scss";
+
+p,
+a,
+h1,
+h2,
+h3,
+h4,
+h5,
+span {
+    margin: 0;
+}
+
+.create-main {
+    width: 100%;
+    min-height: 100vh;
+    background-color: $bg-main;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.create-nft-body {
+    max-width: 1200px;
+    padding: $sp-10;
+    display: flex;
+    flex-direction: column;
+    gap: $sp-4;
+
+    .div-form {
+        margin-top: 0px;
+        .grid-form {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: $sp-10;
+
+            .information-form {
+                grid-column: span 1 / span 1;
+            }
+
+            .box-form {
+                grid-column: span 1 / span 1;
+                margin-top: 0;
+            }
+        }
+    }
+}
+
+.information-form{
+    .infomation-form-content {
+        padding-left: 0px;
+        padding-right: 0px;
+
+        h3 {
+            font-size: $text-sm;
+            color: $text-color;
+            line-height: $leading-tiny;
+            font-weight: $font-medium;
+            margin-bottom: $sp-4;
+        }
+
+        p {
+            font-size: $text-xs;
+            color: $text-color;
+            line-height: $leading-6;
+            text-align: left;
+        }
+    }
+    .title-page {
+        margin-bottom: $sp-10;
+        display: inline-flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: $sp-4;
+        color: $text-color;
+        font-size: $text-lg;
+
+        p {
+            
+            font-size: $text-2xl;
+            font-weight: $font-semibold;
+            line-height: $leading-6;
+            letter-spacing: -0.025em;
+        }
+    }
+}
+
+.box-form{
+    .form {
+        .content-form {
+            overflow: hidden;
+            border-radius: $rounded-sm;
+            border: 2px solid $rounded-color;
+            .content-form-top {
+                padding: $sp-5;
+
+                .content-form-top-grid {
+                    display: grid;
+                    grid-template-columns: repeat(6, minmax(0, 1fr));
+                    gap: $sp-5;
+
+                    .div-label-input {
+                        grid-column: span 3 / span 3;
+                        &.full {
+                            grid-column: span 6 / span 6;
+
+                            textarea {
+                                font-size: $text-3xs;
+                                line-height: $leading-tiny;
+                                margin-top: $sp-1;
+                                box-sizing: border-box;
+                                padding: $sp-3 $sp-2;
+                                display: block;
+                                width: 100%;
+                                border: 1px solid $rounded-color;
+                                border-radius: $rounded-xs;
+                                background-color: $bg-item;
+                                color: $text-color;
+                                &:focus {
+                                    outline: none;
+                                    background-color:$bg-focus;
+                                }
+                            }
+                        }
+                    }
+
+                    .div-img {
+                        width: 100%;
+                        grid-column: span 6 / span 6;
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+
+                    .button-not-empty {
+                        float: right;
+                        padding: $sp-4 0;
+                        grid-column: span 6 / span 6;
+                        border: none;
+                        border-radius: $rounded-xs;
+                        cursor: pointer;
+                        background-color: $bg-item;
+                        color: $rounded-color;
+                        transition: all ease-in-out 0.3s;
+                        box-sizing: border-box;
+                        border: 2px solid $rounded-color;
+                        font-weight: $font-semibold;
+
+                        &:hover {
+                            color: $text-color;
+                            background-color: $bg-separate;
+                            border: 2px solid $bg-contrast;
+                        }
+                        &:active {
+                            transform: scale(1.02);
+                        }
+                    }
+                    .button-empty{
+                        float: right;
+                        padding: $sp-4 0;
+                        grid-column: span 6 / span 6;
+                        border: none;
+                        border-radius: $rounded-xs;
+                        cursor: pointer;
+                        background-color: $bg-item;
+                        color: $rounded-color;
+                        transition: all ease-in-out 0.3s;
+                        box-sizing: border-box;
+                        border: 2px solid $rounded-color;
+                        font-weight: $font-semibold;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.div-label-input{
+    label {
+        display: flex;
+        letter-spacing: 0.025em;
+        align-items: center;
+        text-transform: uppercase;
+        color: $bg-sub;
+        font-size: $text-3xs;
+        font-weight: $font-bold;
+        margin-bottom: $sp-1;
+
+        .icons {
+            padding-left: $sp-2;
+            font-size: $text-xs;
+        }
+    }
+    input {
+        border: 1px solid $rounded-color;
+        font-size: $text-3xs;
+        line-height: $leading-tiny;
+        box-sizing: border-box;
+        padding: $sp-3 $sp-2;
+        display: block;
+        width: 100%;
+        border-radius: $rounded-xs;
+        color: $text-color;
+        background-color: $bg-item;
+        &:focus {
+            outline: none;
+            background-color:$bg-focus;
+        }
+    }
+}
+
+.div-img{
+    .clear-button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        top: 0;
+        right: 0;
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        font-size: $text-sm;
+        background-color: $bg-main;
+    }
+    .div-loading {
+        width: 100%;
+        height: 256px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .animate-spin {
+            animation: spin 1s linear infinite;
+            height: 40px;
+            width: 40px;
+            color: #2f4153;
+        }
+    }
+    .img-url {
+        max-width: 100%;
+        max-height: 256px;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+    label {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        box-sizing: border-box;
+        height: 256px;
+        background-color: $bg-item;
+        border-radius: $rounded-xs;
+        border-style: dashed;
+        cursor: pointer;
+        border: 1px solid $rounded-color;
+
+        .div-child-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0 24px 0;
+
+            .svg-img {
+                margin-bottom: $sp-3;
+                width: 40px;
+                height: 40px;
+                color: $rounded-color;
+            }
+
+            .click-to-upload {
+                margin-bottom: $sp-2;
+                font-size: $text-2xs;
+                line-height: $leading-tiny;
+                color: $rounded-color;
+            }
+
+            .format-text {
+                font-size: $text-3xs;
+                line-height: $leading-tiny;
+                color: $rounded-color;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .create-nft-body {
+        padding: 0;
+        .div-form {
+            .grid-form {
+                display: block;
+                .information-form {
+                    .infomation-form-content {
+                        padding-left: $sp-4;
+                        padding-right: $sp-4;
+                        h3 {
+                            font-size: $text-sm;
+                            color: $text-color;
+                            line-height: $leading-tiny;
+                            font-weight: $font-medium;
+                        }
+                    }
+                }
+                .box-form {
+                    .form {
+                        .content-form {
+                            .content-form-top {
+                                .content-form-top-grid {
+                                    .div-label-input {
+                                        grid-column: span 6 / span 6;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}

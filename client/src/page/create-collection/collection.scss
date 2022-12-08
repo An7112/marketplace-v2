@@ -1,0 +1,271 @@
+@import "../../index.scss";
+
+span {
+    margin: 0;
+}
+
+.create-collection {
+    max-width: 100%;
+    // padding: 0 $sp-9 0 $sp-10;
+    margin: 0 auto;
+    position: relative;
+
+    .header-collection {
+        display: flex;
+        flex-direction: column;
+        margin-top: $sp-6;
+    }
+
+    .form-collection {
+        padding-top: $sp-6;
+    }
+}
+
+.header-collection {
+    h1 {
+        font-weight: 600;
+        font-size: $text-2xl;
+        letter-spacing: 0px;
+        color: $text-color;
+    }
+}
+
+.form-collection {
+
+    button {
+        margin-top: $sp-2;
+        margin-bottom: $sp-2;
+        padding: $sp-3;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $bg-icon;
+        color: $text-color;
+        font-size: $text-2xs;
+        border: none;
+        font-weight: 600;
+        transition: ease-in-out all 0.5s;
+        background-size: 200% auto;
+        border-radius: $rounded-xs;
+    }
+    span {
+        color: $text-color;
+        font-size: $text-3xs;
+        font-weight: 400;
+        line-height: $leading-tiny;
+
+        span {
+            color: red;
+            padding-right: $sp-1;
+        }
+    }
+
+    .create-submit {
+        width: calc(100% - 80px);
+        box-sizing: border-box;
+        z-index: 20;
+        position: fixed;
+        bottom: 0;
+        background-color: $bg-main;
+
+        button {
+            width: 100%;
+            margin-top: $sp-2;
+            margin-bottom: $sp-2;
+            padding: $sp-3;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: $bg-main;
+            color: $text-color;
+            font-size: $text-2xs;
+            border: none;
+            font-weight: 600;
+            transition: ease-in-out all 0.5s;
+            background-size: 200% auto;
+            &:hover {
+                border-radius: $rounded-xs;
+                background-position: right center;
+                background-image: linear-gradient(to right, #85a3d3 0%, #92b0be 51%, #7a96c4 100%);
+            }
+        }
+       
+    }
+}
+
+.form-collection {
+    .class-form-items {
+        margin-bottom: $sp-6;
+        display: flex;
+        flex-direction: column;
+        &.inner {
+            margin-bottom: 0;
+
+            &.head {
+                margin-bottom: $sp-2;
+
+                label {
+                    font-size: $text-xs;
+                    font-weight: 600;
+                    color: $text-color;
+
+                    span {
+                        color: red;
+                        padding-left: $sp-1;
+                    }
+                }
+
+                span {
+                    font-weight: 500;
+                    font-size: $text-2xs;
+                    color: $bg-sub;
+                }
+            }
+
+            .class-logo {
+                position: relative;
+                padding: $sp-1;
+                cursor: pointer;
+                border-radius: 50%;
+                border: 3px dashed $bg-focus;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+                height: 160px;
+                width: 160px;
+                overflow: hidden;
+                box-sizing: border-box;
+
+                input {
+                    display: none;
+                    color: inherit;
+                    font: inherit;
+                    margin: 0px;
+                }
+
+                label {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    box-sizing: border-box;
+                    height: 100%;
+                    cursor: pointer;
+
+                    svg {
+                        font-size: $text-3xl;
+                        color: $bg-sub;
+                    }
+                }
+
+                img {
+                    inset: 0px;
+                    box-sizing: border-box;
+                    position: absolute;
+                    padding: 0px;
+                    border: none;
+                    margin: auto;
+                    display: block;
+                    width: 0px;
+                    height: 0px;
+                    min-width: 100%;
+                    max-width: 100%;
+                    min-height: 100%;
+                    max-height: 100%;
+                    object-fit: cover;
+                }
+
+                .clear-button-collection {
+                    display: none;
+                    align-items: center;
+                    justify-content: center;
+                    left: 0;
+                    right: 0;
+                    margin-left: auto;
+                    margin-right: auto;
+                    z-index: 10;
+                    position: absolute;
+                    width: 50px;
+                    height: 50px;
+                    font-size: $text-sm;
+                    background-color: $bg-item;
+
+                    &:hover {
+                        opacity: 1;
+                    }
+
+                    svg {
+                        font-size: $text-lg;
+                    }
+                }
+
+                &:hover {
+                    background-color: $bg-item;
+
+                    .clear-button-collection {
+                        display: flex;
+                        opacity: 1;
+                    }
+                }
+
+                &.featured {
+                    border-radius: $rounded-sm;
+                    height: 200px;
+                    width: 300px;
+                }
+
+                &.banner {
+                    border-radius: $rounded-sm;
+                    height: 200px;
+                    width: 100%;
+                }
+            }
+
+            .class-input {
+                display: block;
+
+                .input-main {
+                    border-radius: $rounded-sm;
+                    border: 2px solid $bg-focus;
+                    display: flex;
+                    position: relative;
+
+                    .input-prefix {
+                        display: flex;
+                        align-items: center;
+                        background-color: transparent;
+                        padding-left: $sp-3;
+                    }
+
+                    input {
+                        background-color: transparent;
+                        border: none;
+                        flex: 1 0 0%;
+                        height: 48px;
+                        outline: none;
+                        padding: 0 $sp-3 0 0;
+                        min-width: 0px;
+                        color: $text-color;
+                    }
+
+                    textarea {
+                        width: 100%;
+                        border: none;
+                        height: auto;
+                        padding: $sp-3;
+                        outline: none;
+                        resize: vertical;
+                        background-color: transparent;
+                        border-radius: $rounded-sm;
+                        font-size: $text-xs;
+                        line-height: $leading-6;
+                        min-height: 26px;
+                        color: $text-color;
+                    }
+                }
+            }
+        }
+    }
+}

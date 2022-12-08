@@ -1,0 +1,67 @@
+@import "../../index.scss";
+
+
+.not-found-main{
+    display: flex;
+    height: 100%;
+    flex: 1 1 0%;
+    flex-direction: column;
+    background-color: $bg-main;
+    
+    p, h1{
+        margin: 0;
+        text-align: center;
+        color: $text-color;
+    }
+    
+    .not-found-content{
+        width: 80%;
+        margin: 0 auto;
+        max-width: 1280px;
+
+        .error-404-container{
+            margin-top: $sp-11;
+            display: flex;
+            gap: $sp-4;
+            flex-direction: column;
+            align-items: center;
+
+            .error-404{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: row;
+                gap: $sp-5;
+            }
+
+            button{
+                margin-top: $sp-2;
+                margin-bottom: $sp-12;
+                padding: $sp-4;
+                border-radius: $rounded-sm;
+                background-color: $bg-icon;
+                border: none;
+                cursor: pointer;
+
+                a{
+                    text-decoration: none;
+                    color: $text-color;
+                    font-size: $text-xs;
+                    font-weight: $font-semibold;
+                }
+                &:hover{
+                    background-color: #2790f8;
+                }
+            }
+        }
+    }    
+}
+
+.error-404 {
+    p{
+        margin: 0;
+        font-size:160px;
+        font-weight: $font-bold;
+        color: $text-color;
+    }
+}
