@@ -11,11 +11,12 @@ import Web3 from 'web3'
 import { LoadingFrame } from '../../component/loading'
 import './table.scss'
 
-export function TableCollection({ nfts, links, linkDetail }: any) {
+export function TableCollection({ nftsProps, links, linkDetail }: any) {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
   const { loadingCollection, requestLoading, shoppingCart } = useTypedSelector((state: any) => state.stateReducer)
+  const propsData = nftsProps
 
   const [countCompare, setCountCompare] = useState<any>(0)
   const [search, setSearch] = useState<any>("")
@@ -26,7 +27,7 @@ export function TableCollection({ nfts, links, linkDetail }: any) {
   const [nftCompare, setNftCompare] = useState<any>([])
 
   const onAdd = async (item: any) => {
-    const exist: any = await nfts.find((x: any) => x.tokenId === item.tokenId)
+    const exist: any = await propsData.find((x: any) => x.tokenId === item.tokenId)
     dispatch({
       type: actionType.SET_COMPARE_DATA,
       compare: exist
@@ -35,12 +36,12 @@ export function TableCollection({ nfts, links, linkDetail }: any) {
       if (exist) {
         dispatch({
           type: actionType.SET_YOUR_COLLECTION,
-          nfts: nfts.filter((x: any) =>
+          nfts: propsData.filter((x: any) =>
             x.tokenId === item.tokenId ? { ...exist, cp: exist.cp = true } : x
           )
         })
         setNftCompare(
-          nfts.filter((x: any) =>
+          propsData.filter((x: any) =>
             x.tokenId === item.tokenId ? { ...exist, cp: exist.cp = true } : x
           )
         )
@@ -52,16 +53,16 @@ export function TableCollection({ nfts, links, linkDetail }: any) {
     }
     else {
       if (exist) {
-        const index = nfts.findIndex((ele: any) => ele.cp === true)
-        nfts[index].cp = false
+        const index = propsData.findIndex((ele: any) => ele.cp === true)
+        propsData[index].cp = false
         dispatch({
           type: actionType.SET_YOUR_COLLECTION,
-          nfts: nfts.filter((x: any) =>
+          nfts: propsData.filter((x: any) =>
             x.tokenId === item.tokenId ? { ...exist, cp: exist.cp = true } : x
           )
         })
         setNftCompare(
-          nfts.filter((x: any) =>
+          propsData.filter((x: any) =>
             x.tokenId === item.tokenId ? { ...exist, cp: exist.cp = true } : x
           )
         )
@@ -74,16 +75,16 @@ export function TableCollection({ nfts, links, linkDetail }: any) {
   }
 
   const onRemove = (item: any) => {
-    const exist = nfts.find((x: any) => x.tokenId === item.tokenId)
+    const exist = propsData.find((x: any) => x.tokenId === item.tokenId)
     if (exist) {
       dispatch({
         type: actionType.SET_YOUR_COLLECTION,
-        nfts: nfts.filter((x: any) =>
+        nfts: propsData.filter((x: any) =>
           x.tokenId === item.tokenId ? { ...exist, cp: exist.cp = false } : x
         )
       })
       setNftCompare(
-        nfts.filter((x: any) =>
+        propsData.filter((x: any) =>
           x.tokenId === item.tokenId ? { ...exist, cp: exist.cp = false } : x
         )
       )
@@ -94,39 +95,57 @@ export function TableCollection({ nfts, links, linkDetail }: any) {
     }
   }
 
-  const addToCart = async (item: any) => {
-    const exist = await shoppingCart.find((x: any) => x.tokenId === item.tokenId)
-    const addexist = await nfts.find((x: any) => x.tokenId === item.tokenId)
+  const addToCart = (item: any) => {
+    const exist = shoppingCart.find((x: any) => x.tokenId === item.tokenId)
+    const addexist = propsData.find((x: any) => x.tokenId === item.tokenId)
+    dispatch({
+      type: actionType.SET_YOUR_COLLECTION,
+      nfts: propsData.filter((ele: any) =>
+        (ele.tokenId === item.tokenId ? { ...propsData, cart: ele.cart = true } : ele)
+      )
+    })
     if (exist) {
       dispatch({
         type: actionType.SET_SHOPPING_CART,
-        shoppingCart: {key: "add", value: { ...exist, qty: exist.qty + 1 }}
+        shoppingCart: {
+          key: "", value: shoppingCart.map((x: any) =>
+            x.tokenId === item.tokenId ? { ...exist, qty: exist.qty += 1 } : x
+          )
+        }
       })
-      setNftCompare(
-        nfts.filter((x: any) =>
-          x.tokenId === item.tokenId ? { ...exist, cart: exist.cart = true } : x
+      console.log("da co")
+    } else {
+      dispatch({
+        type: actionType.SET_YOUR_COLLECTION,
+        nfts: propsData.filter((ele: any) =>
+          (ele.tokenId === item.tokenId ? { ...propsData, cart: ele.cart = true } : ele)
         )
-      )
-    }else{
+      })
       dispatch({
         type: actionType.SET_SHOPPING_CART,
-        shoppingCart: {key: "add", value: {...addexist, cart: addexist.cart = true, qty: 1}}
+        shoppingCart: { key: "add", value: { ...addexist, cart: addexist.cart = true, qty: 1 } }
       })
     }
   }
 
-  const removeCart = (item: any) => {
-    const exist = nfts.find((x: any) => x.tokenId === item.tokenId)
-    if (exist) {
+  const removeOne = async (item: any) => {
+    const exist = await shoppingCart.find((x: any) => x.tokenId === item.tokenId)
+    if (exist.qty === 1) {
+      dispatch({
+        type: actionType.SET_YOUR_COLLECTION,
+        nfts: propsData.filter((ele: any) =>
+          (ele.tokenId === item.tokenId ? { ...propsData, cart: ele.cart = false } : ele)
+        )
+      })
       dispatch({
         type: actionType.SET_SHOPPING_CART,
-        shoppingCart: {key: "remove", value: exist}
+        shoppingCart: { key: "remove", value: shoppingCart.filter((x: any) => x.tokenId !== item.tokenId) }
       })
-      setNftCompare(
-        nfts.filter((x: any) =>
-          x.tokenId === item.tokenId ? { ...exist, cart: exist.cart = false } : x
-        )
-      )
+    } else {
+      dispatch({
+        type: actionType.SET_SHOPPING_CART,
+        shoppingCart: { key: "remove", value: shoppingCart.map((x: any) => x.tokenId === item.tokenId ? { ...exist, qty: exist.qty -= 1 } : x) }
+      })
     }
   }
 
@@ -157,16 +176,16 @@ export function TableCollection({ nfts, links, linkDetail }: any) {
   useEffect(() => {
     if (search !== "" || search != null) {
       setLoading(true)
-      setCollectionItem(nfts?.filter((ele: any) => (
+      setCollectionItem(propsData?.filter((ele: any) => (
         ele.nftName?.toLowerCase().includes(search.toLowerCase())
       )))
       setLoading(false)
     } else {
-      setCollectionItem(nfts.filter((ele: any) => (
+      setCollectionItem(propsData.filter((ele: any) => (
         ele != null
       )))
     }
-  }, [search, nfts])
+  }, [search, propsData])
 
   useEffect(() => {
     setParamsRouter(nftCompare.filter((ele: any) => (
@@ -175,7 +194,6 @@ export function TableCollection({ nfts, links, linkDetail }: any) {
       ele.tokenId
     )))
   }, [nftCompare])
-
   return (
     <>
       <div className='flex-items-header'>
@@ -297,7 +315,7 @@ export function TableCollection({ nfts, links, linkDetail }: any) {
                                           <MdAddShoppingCart />
                                         </button>
                                         :
-                                        <button type='button' className='button-add active' onClick={() => removeCart(ele)}>
+                                        <button type='button' className='button-add active' onClick={() => removeOne(ele)}>
                                           <BsCartCheckFill />
                                         </button>
                                     }
@@ -310,7 +328,8 @@ export function TableCollection({ nfts, links, linkDetail }: any) {
                                             <button type='button' className='button-add' style={{ opacity: 0.2 }} onClick={() => onAdd(ele)}>
                                               <MdCompare />
                                             </button>
-                                            : <button type='button' className='button-add active' onClick={() => onRemove(ele)}>
+                                            :
+                                            <button type='button' className='button-add active' onClick={() => onRemove(ele)}>
                                               {ele.cp === true ? <BsCheck2Circle /> : <MdCompare />}
                                             </button>
                                         }

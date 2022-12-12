@@ -74,16 +74,14 @@ export const reducer = (state: initialState = defaultState, action: Action): ini
                 ?
                 state.shoppingCart = []
                 :
-                action.shoppingCart.key === "remove"
+                action.shoppingCart.key === "add"
                     ?
-                    state.shoppingCart = state.shoppingCart.filter(
-                        (item: any) => item.value !== action.shoppingCart.value
-                    )
-                    :
                     state.shoppingCart.filter(
                         (f: any) =>
                             f.value !== action.shoppingCart.value)
-                        .concat([action.shoppingCart])
+                        .concat([action.shoppingCart.value])
+                    :
+                    action.shoppingCart.value
             }
         case actionType.SET_ACTIVE_SIDEBAR:
             return {

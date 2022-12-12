@@ -10,7 +10,7 @@ import './collection.scss'
 
 export function Collection() {
     const dispatch = useAppDispatch()
-    const { loadingCollection, requestLoading } = useTypedSelector((state) => state.stateReducer)
+    const { loadingCollection } = useTypedSelector((state) => state.stateReducer)
     const { dataCollection, addnew, dataLength } = useTypedSelector((state) => state.dataCollection)
 
     const [currentPage, setCurrentPage] = useState(1)

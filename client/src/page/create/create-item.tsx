@@ -19,7 +19,7 @@ import './create.scss'
 
 export function CreateItem() {
   const dispatch = useAppDispatch()
-  const { googleStatus, requestLoading } = useTypedSelector((state) => state.stateReducer)
+  const { googleStatus, requestLoading, accountInfo } = useTypedSelector((state) => state.stateReducer)
 
   const [fileUrl, setFileUrl] = useState<any>(null)
   const [loading, setLoading] = useState(false)
@@ -117,7 +117,7 @@ export function CreateItem() {
                   type: actionType.SET_AXIOS_MESSAGE,
                   axiosMessage: ({ key: "remove", value: "", status: "" })
                 })
-                // history(`/your-collection/${accountInfo}`)
+                history(`/your-collection?yourCollectionId=${accountInfo}`)
               }, 3000)
             });
         });

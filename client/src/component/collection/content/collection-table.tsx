@@ -7,7 +7,6 @@ import { LoadingFrame } from '../../loading'
 export function CollectionTable({dataCollection, currentData}:any) {
     const { loadingCollection } = useTypedSelector((state) => state.stateReducer)
     const navigate = useNavigate()
-    const [searchParams] = useSearchParams()
 
     const pageCollectionLoads: Array<any> = []
 

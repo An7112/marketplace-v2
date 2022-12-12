@@ -271,7 +271,7 @@ export function YourCollection() {
                     </div>
                 </ul>
             </div>
-            <TableCollection nfts={nfts} links={`/your-collection/${_id}`} linkDetail="Item"/>
+            <TableCollection nftsProps={nfts} links={`/your-collection/${_id}`} linkDetail="Item"/>
         </main>
     )
 }

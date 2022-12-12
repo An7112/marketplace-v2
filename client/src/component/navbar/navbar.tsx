@@ -10,6 +10,7 @@ import { HiOutlineShoppingCart } from 'react-icons/hi'
 import { IoSettingsOutline } from 'react-icons/io5'
 import { IoMdClose } from 'react-icons/io'
 import { AiFillExclamationCircle, AiFillRest } from 'react-icons/ai'
+import {TbShoppingCartDiscount} from 'react-icons/tb'
 import { Connect } from '../connect-modal'
 import { linkNavbar } from '../../util/links'
 import './navbar.scss'
@@ -22,7 +23,7 @@ export function Navbar() {
   const [openCart, setOpenCart] = useState(false)
 
   const totalPrice = shoppingCart.reduce((a: any, c: any) =>
-    a + (c.value.nftPrice / 1000000000000000000 * c.value.qty), 0
+    a + (c.nftPrice / 1e18 * c.qty), 0
   );
 
   const setActiveSidebar = () => {
@@ -82,17 +83,25 @@ export function Navbar() {
     })
   }
 
-  function removeOne (item:any) {
-    dispatch({
-      type: actionType.SET_YOUR_COLLECTION,
-      nfts: nfts.filter((ele: any) =>
-         (ele.tokenId === item.tokenId ? { ...nfts, cart: ele.cart = false } : ele)
-      )
-    })
-    dispatch({
-      type: actionType.SET_SHOPPING_CART,
-      shoppingCart: { key: "remove", value: item }
-    })
+   function removeOne (item:any) {
+    const exist = shoppingCart.find((x: any) => x.tokenId === item.tokenId)
+    if (exist.qty === 1) {
+      dispatch({
+        type: actionType.SET_YOUR_COLLECTION,
+        nfts: nfts.filter((ele: any) =>
+          (ele.tokenId === item.tokenId ? { ...nfts, cart: ele.cart = false } : ele)
+        )
+      })
+      dispatch({
+        type: actionType.SET_SHOPPING_CART,
+        shoppingCart: { key: "remove", value: shoppingCart.filter((x:any) => x.tokenId !== item.tokenId)}
+      })
+    }else{
+      dispatch({
+        type: actionType.SET_SHOPPING_CART,
+        shoppingCart: { key: "remove", value: shoppingCart.map((x:any) => x.tokenId === item.tokenId ? {...exist, qty: exist.qty -= 1} : x)}
+      })
+    }
   }
 
   useEffect(() => {
@@ -247,25 +256,27 @@ export function Navbar() {
                             <div className='shopping-cart-item'>
                               <div className='box-img-item'>
                                 <span>
-                                  <img src={ele.value.nftImage} alt='' />
+                                  <img src={ele.nftImage} alt='' />
                                 </span>
                               </div>
                               <div className='content-item'>
                                 <div className='content-item-inner'>
                                   <span className='item-name'>
-                                    {ele.value.nftName} #{ele.value.tokenId}
+                                    {ele.nftName} #{ele.tokenId} 
+                                     <span className='item-name qty'><TbShoppingCartDiscount/> {ele.qty}</span>
                                   </span>
                                   <span className='item-owner'>
-                                    {ele.value.owner}
+                                    {ele.owner}
                                   </span>
                                   <span className='item-sub'>
                                     Creation fee: 0.0001 ether
                                   </span>
+                                  
                                 </div>
                               </div>
                               <div className='item-price'>
-                                <span>{ele.value.nftPrice / 1000000000000000000} ETH</span>
-                                <AiFillRest onClick={() => removeOne(ele.value)}/>
+                                <span>{ele.nftPrice / 1e18} ETH</span>
+                                <AiFillRest onClick={() => removeOne(ele)}/>
                               </div>
                             </div>
                           ))

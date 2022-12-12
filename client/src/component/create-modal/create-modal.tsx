@@ -17,7 +17,6 @@ import './create-modal.scss'
 export function CreateModal({ propsCallback }: any) {
 
     const dispatch = useAppDispatch()
-    const {accountInfo } = useTypedSelector((state) => state.stateReducer)
 
     const [fileUrl, setFileUrl] = useState<any>(null)
     const [loading, setLoading] = useState(false)
@@ -25,7 +24,6 @@ export function CreateModal({ propsCallback }: any) {
     const [formInput, updateFormInput] = useState<any>({ nftPrice: 0, nftName: null, nftDescription: null })
 
     const inputRef = useRef<any>(null);
-    const history = useNavigate()
 
     function clearContent() {
         setFileUrl(null)
@@ -115,7 +113,6 @@ export function CreateModal({ propsCallback }: any) {
                                     type: actionType.SET_AXIOS_MESSAGE,
                                     axiosMessage: ({ key: "remove", value: "", status: "" })
                                 })
-                                history(`/your-collection/${accountInfo}`)
                             }, 3000)
                         });
                 });

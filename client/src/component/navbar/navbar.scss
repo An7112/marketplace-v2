@@ -489,8 +489,22 @@
                         color: $text-color;
                         line-height: $leading-6;
                         overflow: hidden;
+                        display: inline-flex;
+                        align-items: center;
+                        gap: $sp-2;
                         text-overflow: ellipsis;
                         white-space: nowrap;
+
+                        svg{
+                            font-size: $text-xs;
+                        }
+
+                        &.qty{
+                            gap:$sp-1;
+                            background-color: $bg-focus;
+                            padding: 0 $sp-1;
+                            border-radius: $rounded-xs;
+                        }
                     }
 
                     .item-owner {
