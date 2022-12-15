@@ -426,7 +426,7 @@ export function Resell() {
                                                     <div className='input-resell-outer'>
                                                         <input value={formInput?.nftPrice} onChange={(e: any) => setFormInput({ nftPrice: e.target.value })} type="number" />
                                                     </div>
-                                                    <TiArrowLeftOutline className='svg-resell'/>
+                                                    <TiArrowLeftOutline className='svg-resell' />
                                                 </div>
                                             </div>
                                             <div className='class-offer-content'>

@@ -466,7 +466,7 @@ input[type="submit"] {
             max-width: fit-content;
             overflow: auto;
 
-            &.last{
+            &.last {
                 margin-right: $sp-4;
                 overflow: inherit;
             }
@@ -663,7 +663,7 @@ input[type="submit"] {
 
 .asset-search-view-main {
     .asset-search-view-result {
-        margin-top: $sp-12;
+        margin-top: $sp-6;
         border: none;
         padding-left: 0px;
         padding-right: 0px;
@@ -700,7 +700,7 @@ input[type="submit"] {
                     align-items: center;
                     justify-content: flex-start;
                     flex-direction: row;
-                    gap: $sp-6;
+                    column-gap: $sp-6;
                 }
             }
         }
@@ -717,6 +717,8 @@ input[type="submit"] {
         position: relative;
         max-height: 380px;
         text-decoration: none;
+        box-sizing: border-box;
+        margin-top: $sp-6;
 
         img {
             object-fit: cover;
@@ -732,6 +734,8 @@ input[type="submit"] {
         }
 
         &:hover {
+            border: 1px solid #f1c94a;
+            box-shadow: 0 0 8px #f1c94a;
             .shadow-content {
                 display: flex;
             }
@@ -749,7 +753,7 @@ input[type="submit"] {
             align-items: center;
             animation: slide-bottom 0.3s;
 
-            &.active{
+            &.active {
                 display: flex;
             }
         }
@@ -797,8 +801,8 @@ input[type="submit"] {
                     color: $text-color;
                     border: none;
                     background-color: #121213af;
-                    
-                    &.active{
+
+                    &.active {
                         background-color: $bg-button;
                     }
 
@@ -808,7 +812,7 @@ input[type="submit"] {
                 }
             }
 
-            .span-price{
+            .span-price {
                 font-size: $text-xs;
                 font-weight: 700;
             }
@@ -1026,8 +1030,8 @@ input[type="submit"] {
         }
     }
 
-    .main-class{
-        .flex-items-header{
+    .main-class {
+        .flex-items-header {
             position: static;
         }
     }

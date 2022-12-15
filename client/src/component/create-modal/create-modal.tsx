@@ -12,7 +12,6 @@ import Web3 from 'web3'
 import Marketplace from '../../contracts/Marketplace.json'
 import MyNFT from '../../contracts/MyNFT.json'
 import { client } from '../../util/api-response'
-import './create-modal.scss'
 
 export function CreateModal({ propsCallback }: any) {
 

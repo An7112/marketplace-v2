@@ -96,7 +96,7 @@ export function CreateItem() {
       const marketplaceContract = new web3.eth.Contract(Marketplace.abi as any, Marketplace.networks[networkId as unknown as keyof typeof Marketplace.networks].address)
       let listingFee = await marketplaceContract.methods.getListingFee().call()
       listingFee = listingFee.toString()
-      try{
+      try {
         await myNftContract.methods.mint(url).send({ from: accounts[0] }).on('receipt', function (receipt: any) {
           console.log('minted');
           // List the NFT
@@ -121,7 +121,7 @@ export function CreateItem() {
               }, 3000)
             });
         });
-      }catch(error:any) {
+      } catch (error: any) {
         dispatch({
           type: actionType.SET_REQUEST_LOADING,
           requestLoading: false
@@ -224,7 +224,7 @@ export function CreateItem() {
                       {formInput.nftName !== null
                         && formInput.nftPrice !== null
                         && formInput.nftDescription !== null
-                        && fileUrl !== null 
+                        && fileUrl !== null
                         ? <button className='button-not-empty' type='submit' onClick={listNFTForSale}>Mint and list NFT</button>
                         : <button type='button' className='button-empty' style={{ cursor: 'default' }}>Data cannot be empty</button>}
                     </div>

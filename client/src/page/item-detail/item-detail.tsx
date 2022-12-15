@@ -3,17 +3,13 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { actionType } from '../../util/store/action'
 import { useTypedSelector } from '../../util/hook'
-import { useParams, useNavigate, Link, useSearchParams, createSearchParams } from 'react-router-dom'
-import { AiOutlineUnorderedList, AiFillCaretDown } from 'react-icons/ai'
-import { GrFormDown, GrFormUp } from 'react-icons/gr'
-import { BsExclamationSquare, BsPatchCheckFill, BsShare } from 'react-icons/bs'
+import { useParams, useNavigate, useSearchParams, createSearchParams } from 'react-router-dom'
+import { AiFillCaretDown } from 'react-icons/ai'
+import { BsPatchCheckFill, BsShare } from 'react-icons/bs'
 import { GiSelfLove } from 'react-icons/gi'
-import { FaEthereum, FaOpencart, FaHome } from 'react-icons/fa'
-import { MdOutlineLocalOffer, MdCompare } from 'react-icons/md'
-import { GoLinkExternal } from 'react-icons/go'
-import { RiEditBoxLine } from 'react-icons/ri'
-import { FiActivity } from 'react-icons/fi'
-import { BiTransferAlt, BiDotsVerticalRounded } from 'react-icons/bi'
+import { FaEthereum, FaHome } from 'react-icons/fa'
+import { MdCompare } from 'react-icons/md'
+import { BiDotsVerticalRounded } from 'react-icons/bi'
 import { LoadingFrame } from '../../component/loading'
 import { Modal } from '../../component/message-modal'
 import { ToastMessage } from '../../component/toast-message'
@@ -96,14 +92,14 @@ export function ItemDetail() {
         const networkId = await web3.eth.net.getId()
         const marketplaceContract = new web3.eth.Contract(Marketplace.abi as any, Marketplace.networks[networkId as unknown as keyof typeof Marketplace.networks].address)
         const accounts = await web3.eth.getAccounts()
-        try{
+        try {
             await marketplaceContract.methods.buyNft(MyNFT.networks[networkId as unknown as keyof typeof MyNFT.networks].address, nft.tokenId).send({ from: accounts[0], value: nft.nftPrice })
             dispatch({
                 type: actionType.SET_REQUEST_LOADING,
                 requestLoading: false
             })
             history("/profile")
-        }catch(error:any){
+        } catch (error: any) {
             dispatch({
                 type: actionType.SET_REQUEST_LOADING,
                 requestLoading: false
@@ -287,9 +283,9 @@ export function ItemDetail() {
                                 <LoadingFrame divWidth={"100%"} divHeight={"60px"} />
                                 :
                                 (
-                                    <Activity/>
+                                    <Activity />
                                 )
-                                }
+                        }
                     </div>
                 </div>
             </div>

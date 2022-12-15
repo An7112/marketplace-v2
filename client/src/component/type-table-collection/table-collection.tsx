@@ -15,7 +15,8 @@ export function TableCollection({ nftsProps, links, linkDetail }: any) {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
-  const { loadingCollection, requestLoading, shoppingCart } = useTypedSelector((state: any) => state.stateReducer)
+  const { loadingCollection, requestLoading, shoppingCart, loadingYourCollection } = useTypedSelector((state: any) => state.stateReducer)
+  const { nfts } = useTypedSelector((state) => state.yourCollectionRedux)
   const propsData = nftsProps
 
   const [countCompare, setCountCompare] = useState<any>(0)
@@ -100,8 +101,8 @@ export function TableCollection({ nftsProps, links, linkDetail }: any) {
     const addexist = propsData.find((x: any) => x.tokenId === item.tokenId)
     dispatch({
       type: actionType.SET_YOUR_COLLECTION,
-      nfts: propsData.filter((ele: any) =>
-        (ele.tokenId === item.tokenId ? { ...propsData, cart: ele.cart = true } : ele)
+      nfts: nfts.filter((ele: any) =>
+        (ele.tokenId === item.tokenId ? { ...nfts, cart: ele.cart = true } : ele)
       )
     })
     if (exist) {
@@ -113,7 +114,6 @@ export function TableCollection({ nftsProps, links, linkDetail }: any) {
           )
         }
       })
-      console.log("da co")
     } else {
       dispatch({
         type: actionType.SET_YOUR_COLLECTION,
@@ -172,6 +172,16 @@ export function TableCollection({ nftsProps, links, linkDetail }: any) {
       })
     }
   }
+
+  useEffect(() => {
+    dispatch({
+      type: actionType.SET_YOUR_COLLECTION,
+      nfts: nfts.filter((ele: any) =>
+        shoppingCart.filter((x: any) =>
+          (ele.tokenId === x.tokenId) ? { ...nfts, cart: ele.cart = true } : ele)
+      )
+    })
+  }, [loadingYourCollection])
 
   useEffect(() => {
     if (search !== "" || search != null) {

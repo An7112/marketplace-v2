@@ -53,31 +53,33 @@ export function Connect() {
                                         <a href='#'>Learn more</a>
                                     </span>
                                 </div>
-                                {accountInfo !== null
-                                    ?
-                                    <div className='account-info'>
-                                        <FaWallet />
-                                        <h4>{accountInfo}</h4>
-                                    </div>
-                                    :
-                                    <ul>
-                                        <li>
-                                            <button className='choose-wallet' onClick={loadAccount}>
-                                                <span><img src='/media/items/metamask-fox.svg' /> MetaMask</span>
-                                                <p>POPULAR</p>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button className='choose-wallet'>
-                                                <span><img src='/media/items/walletlink-alternative.webp' />Coinbase Connect</span>
-                                            </button>
-                                        </li>
-                                        <li>
-                                            <button className='choose-wallet'>
-                                                <span><img src='/media/items/walletconnect-alternative.webp' />Wallet Connect</span>
-                                            </button>
-                                        </li>
-                                    </ul>}
+                                {
+                                    accountInfo !== null
+                                        ?
+                                        <div className='account-info'>
+                                            <FaWallet />
+                                            <h4>{accountInfo}</h4>
+                                        </div>
+                                        :
+                                        <ul>
+                                            <li>
+                                                <button className='choose-wallet' onClick={loadAccount}>
+                                                    <span><img src='/media/items/metamask-fox.svg' /> MetaMask</span>
+                                                    <p>POPULAR</p>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button className='choose-wallet'>
+                                                    <span><img src='/media/items/walletlink-alternative.webp' />Coinbase Connect</span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button className='choose-wallet'>
+                                                    <span><img src='/media/items/walletconnect-alternative.webp' />Wallet Connect</span>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                }
                             </div>
                         </div>
                     </div>
