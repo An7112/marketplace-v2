@@ -19,6 +19,8 @@ export function TableCollection({ nftsProps, links, linkDetail }: any) {
   const { nfts } = useTypedSelector((state) => state.yourCollectionRedux)
   const propsData = nftsProps
 
+  console.log(nftsProps)
+
   const [countCompare, setCountCompare] = useState<any>(0)
   const [search, setSearch] = useState<any>("")
   const [paramsRouter, setParamsRouter] = useState<any>(null)

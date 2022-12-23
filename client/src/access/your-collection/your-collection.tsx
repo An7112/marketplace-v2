@@ -6,6 +6,7 @@ import MyNFT from '../../contracts/MyNFT.json'
 import Marketplace from '../../contracts/Marketplace.json'
 
 export const loadNFTs = (_id:any) => async (dispatch: any) => {
+
     const web3Modal = new Web3Modal()
     const provider = await web3Modal.connect()
     const web3 = new Web3(provider)

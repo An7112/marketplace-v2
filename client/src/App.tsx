@@ -9,7 +9,7 @@ import { Notfound } from './page/page-not-found';
 import { CreateItem } from './page/create';
 import { ApiResponeCollection, ApiResponeSwiper } from './util/api-response';
 import { getDataCollection } from './access/collection-access';
-import { useAppDispatch, useTypedSelector } from './util/hook';
+import { useAppDispatch, useAxios, useTypedSelector } from './util/hook';
 import { GetSwiperData } from './access/swiper-access';
 import { EditItem } from './page/edit-item';
 import { YourCollection } from './page/your-collection';
@@ -24,6 +24,19 @@ function App() {
   const { addnew} = useTypedSelector((state) => state.dataCollection)
   const { requestLoading } = useTypedSelector((state) => state.stateReducer)
 
+  // const {response, loading, error, sendData} = useAxios({
+  //   method: "GET",
+  //   url: '/data',
+  //   headers:{
+  //     accept: '*/*'
+  //   }
+  // })
+
+  // Ex: data reload
+  // const dataReload = () => {
+  //   sendData();
+  // }
+
   useEffect(() => {
     return () => {
       dispatch(getDataCollection(addnew))
@@ -36,8 +49,10 @@ function App() {
     }
   },[ApiResponeSwiper])
 
+
   return (
     <div className='main-app'>
+      {/* <button onClick={() => dataReload()}>Reload</button> */}
       <BrowserRouter>
         <Navbar />
         <main className='class-main'>

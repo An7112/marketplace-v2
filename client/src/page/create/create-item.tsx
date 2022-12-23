@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAppDispatch, useTypedSelector } from '../../util/hook'
+import { useAppDispatch, useStateParams, useTypedSelector } from '../../util/hook'
 import { actionType } from '../../util/store/action'
 import { BiRename } from 'react-icons/bi'
 import { IoPricetagsOutline } from 'react-icons/io5'
@@ -21,6 +21,14 @@ export function CreateItem() {
   const dispatch = useAppDispatch()
   const { googleStatus, requestLoading, accountInfo } = useTypedSelector((state) => state.stateReducer)
 
+  // test search params (Storing state in the URL)
+  const [bool, setBool] = useStateParams(
+    false,
+    'boolean',
+    (s) => (s ? 'true' : 'false'),
+    (s) => s === 'true'
+  );
+  
   const [fileUrl, setFileUrl] = useState<any>(null)
   const [loading, setLoading] = useState(false)
   const [reload, setReload] = useState(false)
@@ -159,6 +167,11 @@ export function CreateItem() {
               </div>
               <div className='infomation-form-content'>
                 <h3>Information</h3>
+
+                {/* test search params (Storing state in the URL) */}
+                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" onClick={() => setBool(!bool)}/>
+
+
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Repellat optio debitis beatae mollitia qui dolorem deleniti nam et,
                   tenetur quisquam? Tenetur eius, provident amet quam corrupti nemo ab voluptates quasi!

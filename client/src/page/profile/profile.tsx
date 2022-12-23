@@ -276,7 +276,7 @@ export function Profile() {
                     </div>
                 </ul>
             </div>
-            <TableCollection nfts={nfts} links="/Profile" linkDetail="resell-nft"/>
+            <TableCollection nftsProps={nfts} links="/Profile" linkDetail="resell-nft"/>
         </main>
     )
 }
