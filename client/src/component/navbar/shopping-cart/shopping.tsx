@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AiFillExclamationCircle, AiFillRest } from 'react-icons/ai'
 import { IoMdClose } from 'react-icons/io'
 import { TbShoppingCartDiscount } from 'react-icons/tb'
 import { useAppDispatch, useTypedSelector } from '../../../util/hook'
 import { actionType } from '../../../util/store/action'
+import Paypal from '../../paypal/paypal'
 import './shopping.scss'
 
 export function Shopping({ propsCallback }: any) {
+  const [checkout, setCheckOut] = useState(false);
   const dispatch = useAppDispatch()
   const { shoppingCart } = useTypedSelector((state) => state.stateReducer)
   const { nfts } = useTypedSelector((state) => state.yourCollectionRedux)
@@ -129,9 +131,16 @@ export function Shopping({ propsCallback }: any) {
             </div>
           </footer>
           <div className='class-button'>
-            <button>
+            {checkout ? (
+                <Paypal/>
+            ) : (
+              <button onClick={() =>{
+                setCheckOut(true)
+              }}>
               Coming soon
             </button>
+            )}
+            
           </div>
         </div>
       </div>
